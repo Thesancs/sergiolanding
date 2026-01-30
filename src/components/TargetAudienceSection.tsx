@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Activity, Award, Dumbbell, Star } from "lucide-react";
 
 type TargetAudienceSectionProps = {
@@ -31,7 +31,7 @@ const audiences = [
     },
 ];
 
-const tvOnAnimation = {
+const tvOnAnimation: Variants = {
     hidden: {
         opacity: 0,
         scaleY: 0.05,
@@ -46,7 +46,7 @@ const tvOnAnimation = {
         transition: {
             duration: 0.65,
             times: [0, 0.7, 1],
-            ease: [0.22, 1, 0.36, 1],
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
         },
     },
 };
