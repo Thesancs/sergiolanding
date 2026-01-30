@@ -73,6 +73,10 @@ export default function MethodologyScroll() {
                 return;
             }
 
+            const numberEls = cards.map((card) =>
+                card.querySelector<HTMLSpanElement>("[data-step-number]")
+            );
+
             gsap.set(cards, { autoAlpha: 0, y: 0, visibility: "hidden" });
             gsap.set(cards[0], { autoAlpha: 1, y: 0, visibility: "visible" });
             gsap.set(cards.slice(1), {
@@ -80,6 +84,20 @@ export default function MethodologyScroll() {
                 y: () => cardOffsetRef.current,
                 visibility: "hidden",
             });
+
+            gsap.set(numberEls, {
+                color: "rgba(255,255,255,0.18)",
+                textShadow: "0 0 0 rgba(56,189,248,0)",
+                opacity: 0.4,
+            });
+            if (numberEls[0]) {
+                gsap.set(numberEls[0], {
+                    color: "rgba(255,255,255,0.9)",
+                    textShadow:
+                        "0 0 22px rgba(56,189,248,0.85), 0 0 60px rgba(59,130,246,0.6)",
+                    opacity: 1,
+                });
+            }
 
             if (lineRef.current) {
                 gsap.set(lineRef.current, { scaleY: 0, transformOrigin: "top" });
@@ -108,11 +126,28 @@ export default function MethodologyScroll() {
 
             for (let i = 0; i < totalSegments; i += 1) {
                 const pos = i;
+                const currentNumber = numberEls[i];
+                const nextNumber = numberEls[i + 1];
+
                 if (lineRef.current) {
                     tl.to(
                         lineRef.current,
                         { scaleY: (i + 1) / totalSegments, duration: 1, ease: "none" },
                         pos
+                    );
+                }
+
+                if (currentNumber) {
+                    tl.to(
+                        currentNumber,
+                        {
+                            color: "rgba(255,255,255,0.18)",
+                            textShadow: "0 0 0 rgba(56,189,248,0)",
+                            opacity: 0.35,
+                            duration: 0.35,
+                            ease: "power2.out",
+                        },
+                        pos + 0.2
                     );
                 }
 
@@ -144,6 +179,21 @@ export default function MethodologyScroll() {
                     },
                     pos + 0.55
                 );
+
+                if (nextNumber) {
+                    tl.to(
+                        nextNumber,
+                        {
+                            color: "rgba(255,255,255,0.9)",
+                            textShadow:
+                                "0 0 22px rgba(56,189,248,0.85), 0 0 60px rgba(59,130,246,0.6)",
+                            opacity: 1,
+                            duration: 0.4,
+                            ease: "power2.out",
+                        },
+                        pos + 0.85
+                    );
+                }
             }
 
             updateLineBounds();
@@ -206,7 +256,10 @@ export default function MethodologyScroll() {
                                 >
                                     <div className="glass-card p-8 md:p-10 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md md:min-h-[220px] flex flex-col justify-between shadow-[0_20px_80px_-40px_rgba(0,0,0,0.6)]">
                                         <div className="flex items-center justify-between mb-6">
-                                            <span className="text-5xl font-condensed font-bold text-white/10">
+                                            <span
+                                                data-step-number
+                                                className="text-5xl font-condensed font-bold text-white/10"
+                                            >
                                                 {step.step}
                                             </span>
                                             <div className="p-3 bg-blue-500/10 rounded-xl text-blue-300">

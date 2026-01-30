@@ -18,53 +18,16 @@ const features = [
     "Ajustes periódicos no plano",
 ];
 
-const WaveDivider = () => (
+const BlurDivider = ({ position }: { position: "top" | "bottom" }) => (
     <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-12 md:h-16 pointer-events-none"
+        className={`absolute inset-x-0 ${position}-0 h-12 md:h-14 pointer-events-none`}
     >
-        <svg
-            viewBox="0 0 1440 160"
-            preserveAspectRatio="none"
-            className="w-full h-full"
-        >
-            <defs>
-                <linearGradient id="deliverablesWaveBottom" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="rgba(15,23,42,0)" />
-                    <stop offset="55%" stopColor="rgba(15,23,42,0.55)" />
-                    <stop offset="100%" stopColor="rgba(2,6,23,0.9)" />
-                </linearGradient>
-            </defs>
-            <path
-                d="M0,120 C240,150 480,90 720,110 C960,130 1200,90 1440,110 L1440,160 L0,160 Z"
-                fill="url(#deliverablesWaveBottom)"
-            />
-        </svg>
-    </div>
-);
-
-const WaveDividerTop = () => (
-    <div
-        aria-hidden="true"
-        className="absolute inset-x-0 top-0 h-12 md:h-16 pointer-events-none"
-    >
-        <svg
-            viewBox="0 0 1440 160"
-            preserveAspectRatio="none"
-            className="w-full h-full"
-        >
-            <defs>
-                <linearGradient id="deliverablesWaveTop" x1="0" y1="1" x2="0" y2="0">
-                    <stop offset="0%" stopColor="rgba(15,23,42,0)" />
-                    <stop offset="55%" stopColor="rgba(15,23,42,0.55)" />
-                    <stop offset="100%" stopColor="rgba(2,6,23,0.9)" />
-                </linearGradient>
-            </defs>
-            <path
-                d="M0,40 C240,10 480,70 720,50 C960,30 1200,70 1440,50 L1440,0 L0,0 Z"
-                fill="url(#deliverablesWaveTop)"
-            />
-        </svg>
+        <div
+            className={`h-full w-full backdrop-blur-md opacity-50 bg-gradient-to-${
+                position === "top" ? "b" : "t"
+            } from-blue-950/15 via-blue-900/10 to-transparent`}
+        />
     </div>
 );
 
@@ -199,8 +162,8 @@ export default function DeliverablesSection({ cta }: DeliverablesSectionProps) {
                     )}
                 </div>
             </div>
-            <WaveDividerTop />
-            <WaveDivider />
+            <BlurDivider position="top" />
+            <BlurDivider position="bottom" />
         </section>
     );
 }

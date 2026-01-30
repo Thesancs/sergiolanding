@@ -275,7 +275,7 @@ export default function LandingPage() {
             className="md:col-span-4 order-2 md:order-1 text-center md:text-left relative z-10 md:z-30 overflow-hidden md:overflow-visible"
           >
             {/* Shadow for Text Readability & Depth */}
-            <div className="absolute top-1/2 left-1/2 md:left-[60%] -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] md:w-[170%] md:h-[170%] bg-black/95 blur-[150px] md:blur-[190px] -z-10 rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 md:left-[60%] -translate-x-1/2 -translate-y-1/2 hidden md:block w-[170%] h-[170%] bg-black/95 blur-[190px] -z-10 rounded-full pointer-events-none" />
 
             <div className="inline-block px-3 py-1 rounded-full glass border-blue-500/30 text-blue-300 font-bold tracking-widest text-[10px] uppercase mb-4">
               Consultoria Esportiva Premium
@@ -377,6 +377,9 @@ export default function LandingPage() {
             </Button>
           </motion.div>
         </div>
+        <div
+          className="pointer-events-none fixed inset-x-0 bottom-0 h-32 md:hidden z-40 backdrop-blur-3xl bg-gradient-to-t from-black/85 via-black/40 to-transparent [mask-image:linear-gradient(to_top,black,transparent)]"
+        />
       </section>
 
       {/* Trust Bar */}
