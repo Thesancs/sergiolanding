@@ -283,7 +283,7 @@ export default function LandingPage() {
               Consultoria Esportiva Premium
             </div>
             <h1 className="font-condensed text-5xl md:text-6xl lg:text-7xl font-bold leading-[0.9] uppercase mb-4 text-white">
-              Transforme <br />
+              <span className="text-blue-400">Transforme</span> <br />
               <span className="text-white">Seu Corpo</span>
             </h1>
             <p className="text-sm md:text-base text-gray-400 leading-relaxed border-l-2 border-blue-500 pl-4 max-w-xs mx-auto md:mx-0">
@@ -347,7 +347,7 @@ export default function LandingPage() {
                     "translate3d(calc(var(--parallax-x) * 16px), calc(var(--parallax-y) * 20px), 0)",
                 }}>
                   <Image
-                    src="/nova_foto.png"
+                    src="/hero.webp"
                     alt="Sergio Daniel"
                     width={1800}
                     height={1800}
