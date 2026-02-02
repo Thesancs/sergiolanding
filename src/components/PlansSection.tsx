@@ -13,6 +13,7 @@ const plans = [
         price: "R$397",
         label: "2 meses",
         href: "https://wa.me/5519992483385?text=Ol%C3%A1%20S%C3%A9rgio%2C%20tenho%20interesse%20na%20consultoria%20de%20R%24397",
+        badge: "Mais vendido",
     },
     {
         price: "R$497",
@@ -37,8 +38,13 @@ export default function PlansSection() {
                 {plans.map((plan) => (
                     <div
                         key={plan.label}
-                        className="glass-card rounded-3xl p-8 text-center border border-white/10 hover:bg-white/5 transition-colors"
+                        className="relative glass-card rounded-3xl p-8 text-center border border-white/10 hover:bg-white/5 transition-colors"
                     >
+                        {plan.badge && (
+                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-500/90 px-4 py-1 text-xs font-bold uppercase tracking-widest text-white shadow-lg shadow-blue-500/30">
+                                {plan.badge}
+                            </div>
+                        )}
                         <div className="text-4xl font-bold text-white mb-2">
                             {plan.price}
                         </div>

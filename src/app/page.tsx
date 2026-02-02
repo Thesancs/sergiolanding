@@ -201,7 +201,7 @@ export default function LandingPage() {
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 px-4">
-        <div className="max-w-7xl mx-auto glass rounded-full px-6 py-3 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto glass rounded-full px-6 py-3 grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-[auto_1fr_auto] items-center gap-4">
           <div className="flex items-center">
             <Image
               src="/logo.svg"
@@ -213,16 +213,18 @@ export default function LandingPage() {
             />
           </div>
 
-          <div className="hidden md:flex items-center space-x-8 text-sm font-medium uppercase tracking-wider text-gray-300">
+          <div className="hidden md:flex items-center justify-center gap-8 text-sm font-medium uppercase tracking-wider text-gray-300">
             <a href="#metodo" className="hover:text-white transition-colors">Como Funciona</a>
             <a href="#resultados" className="hover:text-white transition-colors">Resultados</a>
             <a href="#planos" className="hover:text-white transition-colors">Planos</a>
-            <Button variant="primary" className="px-6 py-2 text-sm" href={whatsappUrl}>Começar Agora</Button>
           </div>
 
-          <button className="md:hidden text-white p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
+          <div className="flex items-center justify-end gap-3">
+            <Button variant="primary" className="hidden md:inline-flex px-6 py-2 text-sm" href={whatsappUrl}>Começar Agora</Button>
+            <button className="md:hidden text-white p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X /> : <Menu />}
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -417,7 +419,7 @@ export default function LandingPage() {
 
       {/* FAQ */}
       <Section className="max-w-3xl">
-        <SectionTitle subtitle="DÃºvidas">Perguntas Frequentes</SectionTitle>
+        <SectionTitle subtitle="Dúvidas">Perguntas Frequentes</SectionTitle>
         <div className="glass p-8 rounded-3xl">
           {[
             { q: "Como funciona a consultoria online?", a: "Tudo é feito através do nosso aplicativo. Você recebe seu treino, dieta e tem acesso ao chat direto comigo para tirar dúvidas e enviar vídeos das execuções." },
